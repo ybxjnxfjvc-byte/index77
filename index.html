@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0072bc">
+  <title>Estudiamos · Система обучения</title>
+  <style>
+    :root{--blue:#0072bc;--blue-deep:#00528d;--orange:#f7941d;--ink:#10233b;--muted:#587089;--paper:#f7fbff;--white:#fff;--line:#dce9f3;--shadow:0 18px 45px rgba(20,72,113,.12)}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Arial,"Helvetica Neue",sans-serif} button,input{font:inherit} a{color:inherit} a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+    .shell{display:grid;grid-template-columns:288px minmax(0,1fr);min-height:100vh}.sidebar{position:sticky;top:0;height:100vh;padding:28px 22px;background:#fff;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:24px;z-index:3}.brand{display:flex;align-items:center;gap:12px;text-decoration:none}.logo{width:48px;height:48px;border-radius:50%;object-fit:cover;box-shadow:0 8px 16px rgba(0,0,0,.15)}.brand-name{font-weight:800;letter-spacing:.02em;color:var(--blue);font-size:20px}.brand small{display:block;color:var(--muted);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+    .course-label{font-size:12px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--orange);margin-bottom:6px}.side-title{font-size:20px;line-height:1.15;margin:0}.progress-wrap{background:#edf5fa;border-radius:99px;height:8px;overflow:hidden;margin-top:10px}.progress{height:100%;width:33%;border-radius:inherit;background:linear-gradient(90deg,var(--orange),#ffbd54)}.progress-copy{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-top:7px}
+    .course-nav{display:grid;gap:8px}.course-nav a{display:flex;align-items:center;gap:12px;padding:11px 10px;border-radius:14px;text-decoration:none;font-weight:700;color:#5e7184;min-width:0}.course-nav a:hover{background:#eef8ff;color:var(--blue)}.course-nav a.active{background:var(--blue);color:#fff;box-shadow:0 10px 20px rgba(0,114,188,.22)}.nav-num{width:25px;height:25px;flex:0 0 25px;border:1px solid currentColor;border-radius:50%;display:grid;place-items:center;font-size:11px}.save-box{margin-top:auto;padding:15px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,#fff,#f1f9ff)}.save-box p{font-size:13px;line-height:1.35;margin:0 0 10px;color:var(--muted)}.save-row{display:flex;gap:8px}.save-row input{min-width:0;width:100%;border:1px solid #bfd9ec;border-radius:10px;padding:9px;background:#fff}.save-row button{border:0;border-radius:10px;padding:9px 10px;background:var(--blue);color:#fff;font-weight:800;cursor:pointer}.saved-name{font-size:12px;color:var(--blue-deep);font-weight:700;min-height:18px;margin:9px 0 0}
+    main{min-width:0}.topbar{display:none}.content{width:min(1160px,100%);margin:0 auto;padding:36px 42px 72px}.hero{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(250px,.75fr);gap:34px;align-items:center;padding:clamp(28px,5vw,60px);border-radius:30px;background:linear-gradient(125deg,#003f6e 0%,#0072bc 65%,#168fd5);color:#fff;box-shadow:var(--shadow)}.hero:after{content:"";position:absolute;width:420px;height:420px;border:50%;border:56px solid rgba(255,255,255,.08);right:-220px;top:-215px}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:#fff0d6;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.eyebrow:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--orange)}h1{font-size:clamp(38px,5.2vw,68px);line-height:.98;letter-spacing:-.05em;margin:16px 0 18px}.hero p{font-size:18px;max-width:620px;margin:0;color:#e3f4ff}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.button{display:inline-flex;justify-content:center;align-items:center;min-height:47px;padding:11px 18px;border-radius:13px;text-decoration:none;font-weight:800;transition:.2s transform,.2s background}.button:hover{transform:translateY(-2px)}.button.primary{background:var(--orange);color:#fff}.button.ghost{border:1px solid rgba(255,255,255,.5);color:#fff}.hero-art{position:relative;z-index:1;display:grid;place-items:center;min-height:245px}.sun{position:absolute;width:205px;height:205px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 16px rgba(255,255,255,.12)}.hola{position:relative;max-width:230px;padding:24px 22px;border-radius:24px;background:#fff;color:var(--blue);font-size:24px;font-weight:900;line-height:1.02;box-shadow:0 20px 35px rgba(0,0,0,.16);transform:rotate(-6deg)}.hola span{display:block;margin-top:10px;color:var(--ink);font-size:14px;letter-spacing:.06em;text-transform:uppercase}.hola:after{content:"";position:absolute;bottom:-14px;left:35px;border-width:17px 18px 0 0;border-style:solid;border-color:#fff transparent transparent transparent}
+    .section{padding-top:68px;scroll-margin-top:20px}.section-head{display:grid;grid-template-columns:1fr auto;align-items:end;gap:20px;margin-bottom:24px}.kicker{color:var(--orange);font-size:12px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}.section h2{font-size:clamp(28px,3.4vw,46px);line-height:1.03;letter-spacing:-.04em;margin:8px 0 0}.section-intro{max-width:700px;color:var(--muted);font-size:17px;margin:0}
+    .fact-grid,.steps,.sources,.check-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.card{min-width:0;background:#fff;border:1px solid var(--line);border-radius:22px;padding:23px;box-shadow:0 10px 25px rgba(27,93,136,.06)}.card p{margin:9px 0 0;color:var(--muted)}.fact-number{font-size:40px;font-weight:900;letter-spacing:-.05em;color:var(--blue);line-height:1}.fact-number.orange{color:var(--orange)}.fact-note{font-size:13px;line-height:1.4;color:var(--muted);margin-top:10px}.steps{grid-template-columns:repeat(5,minmax(0,1fr));counter-reset:step}.step{position:relative;padding:21px 17px 20px;background:#fff;border:1px solid var(--line);border-radius:20px;min-width:0}.step:before{counter-increment:step;content:"0" counter(step);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#e8f6ff;color:var(--blue);font-weight:900;font-size:12px}.step h3{font-size:17px;line-height:1.15;margin:17px 0 7px}.step p{margin:0;color:var(--muted);font-size:14px;overflow-wrap:anywhere}.note{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;padding:23px;border-radius:20px;background:#fff5e7;border:1px solid #ffe2b2;color:#704006}.note-mark{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--orange);color:#fff;font-size:20px;font-weight:900}.note p{margin:4px 0 0}.source-card a{color:var(--blue);font-weight:800;text-decoration-thickness:2px;text-underline-offset:3px}.source-card small{display:block;color:var(--muted);margin-top:10px}
+    .knowledge{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;align-items:stretch}.quiz{background:var(--ink);color:#fff;border-radius:24px;padding:28px}.quiz h3{font-size:24px;line-height:1.12;margin:0}.quiz p{color:#c9d8e6}.answers{display:grid;gap:10px;margin-top:18px}.answer{width:100%;text-align:left;border:1px solid rgba(255,255,255,.28);background:transparent;border-radius:13px;padding:13px 14px;color:#fff;cursor:pointer;font-weight:700}.answer:hover{border-color:#fff;background:rgba(255,255,255,.08)}.answer.good{background:#1e9c6d;border-color:#1e9c6d}.answer.bad{background:#ba4a4a;border-color:#ba4a4a}.feedback{min-height:24px;margin:14px 0 0;font-weight:700}.next-panel{display:flex;flex-direction:column;justify-content:space-between;border-radius:24px;padding:28px;background:linear-gradient(145deg,#f3fbff,#fff);border:1px solid var(--line)}.next-panel h3{font-size:28px;line-height:1.08;margin:0}.next-panel p{color:var(--muted)}.next-panel .button{align-self:flex-start;background:var(--blue);color:#fff}
+    footer{margin-top:70px;padding-top:24px;border-top:1px solid var(--line);display:flex;gap:16px;justify-content:space-between;align-items:flex-start;color:var(--muted);font-size:13px}footer a{color:var(--blue);font-weight:700}
+    @media(max-width:980px){.shell{display:block}.sidebar{position:static;height:auto;padding:16px 20px;border-right:0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:auto 1fr;align-items:center;gap:12px}.course-label,.side-title,.progress-wrap,.progress-copy,.save-box{display:none}.course-nav{display:flex;justify-content:flex-end;gap:6px}.course-nav a{padding:9px}.course-nav .nav-label{display:none}.content{padding:24px 24px 58px}.steps{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{grid-template-columns:1fr}.hero-art{display:none}} 
+    @media(max-width:700px){.sidebar{grid-template-columns:1fr;gap:13px}.course-nav{justify-content:stretch}.course-nav a{flex:1;justify-content:center}.content{padding:16px 14px 44px}.hero{border-radius:22px;padding:30px 23px}.hero p{font-size:16px}.section{padding-top:48px}.section-head{grid-template-columns:1fr}.fact-grid,.steps,.sources,.knowledge{grid-template-columns:1fr}.fact-grid{gap:12px}.steps{gap:12px}.section-intro{font-size:16px}.card,.step{padding:19px}.hero-actions{display:grid;grid-template-columns:1fr}.button{width:100%}.next-panel .button{width:auto}.quiz,.next-panel{padding:23px}footer{display:block}footer p{margin:0 0 9px}} 
+    @media(max-width:375px){.brand-name{font-size:18px}.course-nav a{padding:8px}.hero{padding:26px 20px}.section h2{font-size:29px}h1{font-size:40px}.nav-num{width:23px;height:23px;flex-basis:23px}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Навигация по курсу">
+      <a class="brand" href="index.html" aria-label="Estudiamos — начало курса">
+<img class="logo" alt="Логотип Estudiamos" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAYEBQUFBAYFBQUHBgYHCQ8KCQgICRMNDgsPFhMXFxYTFRUYGyMeGBohGhUVHikfISQlJygnGB0rLismLiMmJyb/2wBDAQYHBwkICRIKChImGRUZJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJib/wAARCACAAIADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD5UooooAKKKKACirIhCDdO2z/YH3v/AK1Bn2f6pBH79T+dADUt5nXIibb64pfs792jX6yCo3dnOXJY+5ptAE32d+zRt9JBTXt5kXc0Zx61HTkd0OUYqfY0AR0VZE+//WoJPfofzoMIf5oW3f7B+9/9egCtRRRQAUUUUAFFFFAD0RnYKo3E9qnyLfiPDSd3/u/T/Gh/3Ee3/lo45/2R6VXoAGOTk9aKKKACiiigAooooAKAcHIoooAs5FxxJhZez/3vr/jVZ1KsQw2kdqKsqftCbSf3qDg/3h6UAVKKKKACrNsAMzMNyp29T2qtViQ7II4+7fOf6UARszOxYnJPU02iigAooooAKK9m8Ofs8+OPEGhafrlhd6OLW/t0uIRLcOHCOMrn5OtYvxJ+Dfir4e6HBrOt3Gmy201ytsgtZ2dt5Vm/iQcfIaAPM6K9i8C/ADxr4t0aHWUex0yyuU3wNeO++ROzBUBIB96xfid8IPFfw8to73Vlt7vT5X2Ld2blkDdlYEAr3oA83orrdI8CaxqvgPV/G1tNajS9JmEM6O5EhY7Pujbj+Ne9clQAUqsVIIOCKSigCe5AYiZRhZO3oe9VqsRnfBJH3X5x/Wq9ADlXJA9anuyTcPjoDtH4cUy25uYv98fzpsnMj/U0ANooooAK9C8T/CjxZ4a8I2ni3U1sxpd35JiMVxvf94NyfLj0rz2vSvF48VRfDTwnqmo+LtR1HS9aMyxadNK5jtvs77ExlsHjpwMUAfQHivVdS0b9kzRNQ0m/uLC8i0/TwlxbSFHUF0B+YV8ra34v8U6/apZa34h1LU7ZJBII7u5eVFfBG7Dd8E19lab4a03xf+zn4d0LV9T/ALLtJ9Nsme43Iu3ZtYff45xXzt8afhh4Z8DaLp9/onig6xLc3BheLdE2xdmc/IfWgD2P9qy/v9B+G3hqw0i7nsYDcJC4gkKbkSHhTjt/hVS5vLnX/wBjSS91e4a7uVg/10zb2Pl3m1OfXaNtbi3HgX47/DrSNJvdeSy1i28uV4lkRZ4Zwmx/kf76Hnp7V5H8Xvhx4++HHhH7ND4uu9W8IO/kyWySPEkO59y74dxXBPcd6ADwCQP2V/iEuf8AmIxfzhrwRq9p8GzFP2YfH0YP3tUsx+bRf4V4vQAUUUUAT2hIuEz0J2n8eKgZcEj0p8RxKh9xS3IxcSj/AGz/ADoAbEcSo3owpbgYmkX0c1FVi65l39nAegCGiiigBF617V8S7fZ+z78LH/273/x5814un3x9a97+K0IX9nL4Xn0M3/jwY0AehePwX/Y/0dV5P2HTf/Q0r5NNpKF3MuF9eBX2J4J8bfDHUPhb4a8La/q9hczRWdtFLYzRyP8AvU6DaByd1ZHxni0bRvBsNp4TSGG4bUpRJFbwJx5aBJMrs/gyi+2a56lWzOilS5jjf2ifh14R8F+DvDuo+HdLNrd3c+yeb7RJJvHk7ujMQOeeK7qC9n1n9jWefU5GnlWxkXfIck+Xc7U/9BWrL3fhH4l/D3TNP8aS3Wl3OnzJDN8xicXIjbOwkFSCgY4xx7Vk/EvX/Dtl8Gv+ED+H6XGqWZaO2kuo0d4oQX8w7pMBWkc/wj+8apVYsToyR5J4VnRf2d/HNsXAd9VscJnk/N/9jXk+1q+hvBnwp8Mar8PZbnVYtSi8UuJUtoWYxRNIQxgzlMYKjPXoO1eeeJPAF7oHhSy1nUJCk95IVjtliJxEOPNZ+gy3Qd+tP2sb2F7GVrnndFK4w1IK1Wpi9B8IzMi+rCic7pnb1Y0+14k39kBaq9ABVkfvbXvuiP8A46f/AK/86rVNBJ5cmSNy9GX1FAEdFSzR+W+AdynkN6ioqAFXqPrXtfxJ8RaHqHwJ+H2jWOqW9xqVgX+1W0b7nh+U/eHavE6M0AeveGfHdj4d8A2NvpgVNetNVN6fNg3pIAE8vcd33V+fjryMd667SfHXh+HwpebLF3soppraNFAViZEhk3uCT8ryQODz0PevnUOy1Klw6oy7jg9qwlTujpjV5Xc+kbz4weG7rT2STS7tZ1uGnBSQL5jyCYTf7h2zcH5ui1gQfGd7DT7S00zR7ezS0jTy0Rso8gnEmSD6qMHHPv2rw3z29aTzmqFRSKdZs9lsfjDqcVpEL0PqMi3EzOk0hCmF4DCqAjldu98fWuO1vx5qupaPeaVNL+4up1mfk/KB0QLnAGefwFcT5jUxmJq40op3JlVbQOctSCipYY/Mfk7UHJPoK3WhzPUcf3Vr33Sn/wAdH/1/5VWqaeTzJN2Nq9AvoKhoAKKKKALMTqy+VIcD+Fv7p/wqORGjcq67TUVWUlBQRzAsi9COq0AQUVLJCyLuGHT++KioAKKKKACiiigAooqWOEuNxISP+8aAI0RpHCIMsamldUXyY2yP4j6n/CkeUKhjiBVG6k9TVegAooooAKKKKACiiigCSOR4zlGIqXfC/wDrIth/vR/4VWooAseSjfcnT/gfFH2eTtsb/dcVXooAsfZ5O+xf95xR5KL9+dP+Ac1XooAs74U/1cW8/wB6T/CoZJHkOXbNMooAKKKKACiiigD/2Q==">
+        <span><span class="brand-name">Estudiamos</span><small>система обучения</small></span>
+      </a>
+      <div class="side-course">
+        <div class="course-label">Кейс 77</div>
+        <h2 class="side-title">Маршрут к сильной рекомендации</h2>
+        <div class="progress-wrap"><div class="progress"></div></div>
+        <div class="progress-copy"><span>Пройдено</span><strong>1 из 3</strong></div>
+      </div>
+      <nav class="course-nav">
+        <a class="active" href="index.html" aria-current="page"><span class="nav-num">1</span><span class="nav-label">Система</span></a>
+        <a href="roles.html"><span class="nav-num">2</span><span class="nav-label">Роли</span></a>
+        <a href="trainer.html"><span class="nav-num">3</span><span class="nav-label">Практика</span></a>
+      </nav>
+      <div class="save-box">
+        <p>Сохрани имя — курс поприветствует тебя при следующем открытии на этом устройстве.</p>
+        <div class="save-row"><input id="learnerName" maxlength="32" autocomplete="off" placeholder="Твоё имя" aria-label="Твоё имя"><button id="saveName" type="button">OK</button></div>
+        <div id="savedName" class="saved-name" aria-live="polite"></div>
+      </div>
+    </aside>
+    <main>
+      <div class="content">
+        <section class="hero" aria-labelledby="pageTitle">
+          <div>
+            <span class="eyebrow">Старт курса</span>
+            <h1 id="pageTitle">Помогаем выбрать язык, а не просто курс.</h1>
+            <p id="greeting">В Estudiamos путь начинается с живой цели человека: говорить, учиться, путешествовать или чувствовать себя увереннее в новой среде.</p>
+            <div class="hero-actions">
+              <a class="button primary" href="#steps">Смотреть систему</a>
+              <a class="button ghost" href="roles.html">Перейти к ролям →</a>
+            </div>
+          </div>
+          <div class="hero-art" aria-hidden="true"><div class="sun"></div><div class="hola">¡Hola!<span>цель · маршрут · поддержка</span></div></div>
+        </section>
+
+        <section class="section" id="about">
+          <div class="section-head">
+            <div><div class="kicker">Контекст</div><h2>Языковое обучение, в котором важен следующий шаг.</h2></div>
+            <p class="section-intro">Эта учебная система собрана по открытой информации о компании и превращает каталог программ в ясный разговор с человеком.</p>
+          </div>
+          <div class="fact-grid">
+            <article class="card"><div class="fact-number">2013</div><p>На странице работодателя указан год начала работы онлайн-школы.</p><div class="fact-note">Источник — профиль Estudiamos на hh.ru.</div></article>
+            <article class="card"><div class="fact-number orange">ES + EN</div><p>На официальном сайте представлены программы испанского и английского языков.</p><div class="fact-note">Испанский — от A1 до B1.2; есть также английские курсы.</div></article>
+            <article class="card"><div class="fact-number">2019</div><p>В публикации Biz360 переход к онлайн-проекту Estudiamos описан в интервью с основателем.</p><div class="fact-note">Это изложение позиции собеседника, а не независимый аудит компании.</div></article>
+          </div>
+        </section>
+
+        <section class="section" id="steps">
+          <div class="section-head"><div><div class="kicker">Рабочая модель</div><h2>Пять шагов от первого «hola» до продолжения обучения.</h2></div><p class="section-intro">Это практическая схема коммуникации для команды: она не подменяет программу курса и не обещает результат без работы ученика.</p></div>
+          <div class="steps">
+            <article class="step"><h3>Услышать цель</h3><p>Уточнить язык, ситуацию, срок и то, что человек хочет уметь делать.</p></article>
+            <article class="step"><h3>Понять старт</h3><p>Выяснить предыдущий опыт и не предлагать следующий уровень наугад.</p></article>
+            <article class="step"><h3>Собрать маршрут</h3><p>Показать одну релевантную программу и объяснить, почему она отвечает запросу.</p></article>
+            <article class="step"><h3>Поддержать практику</h3><p>Напомнить, что регулярность, задания и обратная связь делают обучение живым.</p></article>
+            <article class="step"><h3>Предложить продолжение</h3><p>Вернуться к цели после результата и расширять маршрут только по потребности ученика.</p></article>
+          </div>
+          <div class="note" style="margin-top:18px"><div class="note-mark">!</div><div><strong>Этичная рекомендация</strong><p>Кросс-продажа уместна только тогда, когда следующий продукт помогает достичь названной цели. Если вводных не хватает — сначала спроси.</p></div></div>
+        </section>
+
+        <section class="section" id="sources">
+          <div class="section-head"><div><div class="kicker">Открытые источники</div><h2>Отделяем факты, заявления и редакционные материалы.</h2></div></div>
+          <div class="sources">
+            <article class="card source-card"><strong>Страница работодателя</strong><p>Описание школы, специализация и ссылка на сайт работодателя.</p><a href="https://hh.ru/employer/2564496?from=share_ios" target="_blank" rel="noopener">Открыть hh.ru ↗</a><small>Информация размещена работодателем.</small></article>
+            <article class="card source-card"><strong>Официальный сайт</strong><p>Программы испанского и английского, публичный каталог и форматы обучения.</p><a href="https://estudiamos-school.com/home" target="_blank" rel="noopener">Открыть Estudiamos ↗</a><small>Проверяй актуальные условия перед рекомендацией.</small></article>
+            <article class="card source-card"><strong>Публикация Biz360</strong><p>Интервью о развитии школы и переходе в онлайн-формат.</p><a href="https://biz360.ru/materials/muchas-grasias-amigo-kak-onlayn-shkola-ispanskogo-yazyka-zarabatyvaet-48-mln-rubley-v-god/" target="_blank" rel="noopener">Читать материал ↗</a><small>Цифры в интервью — слова основателя.</small></article>
+          </div>
+        </section>
+
+        <section class="section" id="check">
+          <div class="knowledge">
+            <div class="quiz">
+              <div class="kicker" style="color:#ffbd54">Проверить себя</div>
+              <h3>Какой первый шаг сильной рекомендации?</h3>
+              <p>Выбери ответ до перехода к роли команды.</p>
+              <div class="answers" id="answers">
+                <button class="answer" type="button" data-correct="false">Сразу назвать самый популярный курс.</button>
+                <button class="answer" type="button" data-correct="true">Выяснить цель, язык и текущий опыт человека.</button>
+                <button class="answer" type="button" data-correct="false">Предложить два курса, чтобы выбор был сложнее.</button>
+              </div>
+              <div id="feedback" class="feedback" aria-live="polite"></div>
+            </div>
+            <div class="next-panel">
+              <div><div class="kicker">Дальше</div><h3>Один путь ученика — несколько точек качества.</h3><p>Посмотри, как разные рабочие функции удерживают смысл рекомендации на каждом этапе.</p></div>
+              <a class="button" href="roles.html">К ролям в системе →</a>
+            </div>
+          </div>
+        </section>
+
+        <footer>
+          <p>Estudiamos · учебный кейс 77</p>
+          <p><a href="#about">К началу страницы ↑</a> · <a href="roles.html">Следующая страница: роли →</a></p>
+        </footer>
+      </div>
+    </main>
+  </div>
+  <script>
+    (function(){
+      var key='estudiamos77.name';
+      var input=document.getElementById('learnerName');
+      var output=document.getElementById('savedName');
+      var greeting=document.getElementById('greeting');
+      function clean(value){return value.replace(/[<>]/g,'').trim().slice(0,32)}
+      function show(value){if(value){output.textContent='¡Hola, '+value+'! Имя сохранено на этом устройстве.';greeting.textContent='¡Hola, '+value+'! В Estudiamos путь начинается с живой цели человека: говорить, учиться, путешествовать или чувствовать себя увереннее в новой среде.'}}
+      try{var existing=localStorage.getItem(key)||'';input.value=existing;show(existing)}catch(e){}
+      document.getElementById('saveName').addEventListener('click',function(){var value=clean(input.value);input.value=value;if(!value){output.textContent='Введи имя, если хочешь сохранить приветствие.';return}try{localStorage.setItem(key,value);show(value)}catch(e){output.textContent='Браузер не сохранил имя, но курс продолжит работать.'}});
+      document.getElementById('answers').addEventListener('click',function(event){var button=event.target.closest('button');if(!button){return}var all=document.querySelectorAll('.answer');all.forEach(function(item){item.disabled=true;item.classList.remove('good','bad')});var correct=button.dataset.correct==='true';button.classList.add(correct?'good':'bad');if(!correct){document.querySelector('.answer[data-correct="true"]').classList.add('good')}document.getElementById('feedback').textContent=correct?'Верно. Сначала цель и стартовая точка — затем программа.':'Почти. Сильная рекомендация начинается с цели, языка и опыта ученика.'});
+    }());
+  </script>
+</body>
+</html>
